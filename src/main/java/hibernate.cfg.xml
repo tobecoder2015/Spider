@@ -1,0 +1,29 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <!-- 一个session-factory 对应一个数据库  多个数据库时，需要配置多个session-factory  -->
+	<session-factory >
+	<!--可以更换成其他数据库，只需修改配置文件-->
+	<property name="connection.url">jdbc:mysql://localhost/db</property>
+	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+	<property name="connection.password">1205</property>
+	<property name="connection.username">root</property>
+	
+	
+	<!-- 数据库方言信息， -->
+	<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+	
+	<property name="show_sql">true</property>
+	<!-- 标签要放到数据库后面 -->
+	<mapping resource="com/hiberate/demo/User.hbm.xml"/>
+	
+	<mapping resource="com/hiberate/demo/Group.hbm.xml"/>
+	
+	<mapping resource="com/hiberate/demo/IDCard.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>
+
+

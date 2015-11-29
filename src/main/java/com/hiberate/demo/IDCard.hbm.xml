@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- <class name="com.hiberate.demo.User" table="t_user" >    we can rename the table name in dabase  and the col name can also rename-->
+	<class name="com.hiberate.demo.IDCard" table="Card" >
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="num"/>
+	
+		
+	</class>
+	
+</hibernate-mapping>

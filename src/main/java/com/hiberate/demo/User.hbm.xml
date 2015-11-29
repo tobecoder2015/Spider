@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- <class name="com.hiberate.demo.User" table="t_user" >    we can rename the table name in dabase  and the col name can also rename-->
+	<class name="com.hiberate.demo.User" table="User" >
+		<id name="id">
+			<generator class="foreign">
+			<param name="property">IDCard</param>
+			</generator>
+		</id>
+		<property name="name"/>
+		<property name="age"/>
+		<!-- cascade 级联    连带删除  更新  增加 -->
+		<many-to-one name="group" column="groupID" cascade="all" />
+		<one-to-one name="card"  constrained="true"  />
+	</class>
+	
+</hibernate-mapping>
