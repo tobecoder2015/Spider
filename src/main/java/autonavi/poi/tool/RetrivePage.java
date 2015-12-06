@@ -1,4 +1,4 @@
-package autonavi.poi.dbhelper;
+package autonavi.poi.tool;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,6 +9,7 @@ import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 
 public class RetrivePage {
@@ -24,7 +25,7 @@ public class RetrivePage {
 		InputStream input = null;
 		OutputStream output = null;
 		// 得到post方法
-		PostMethod postMethod = new PostMethod(path);
+		GetMethod getMethod=new GetMethod(path);
 		// 设置post方法的参数
 		/*
 		 * NameValuePair[] postData = new NameValuePair[2]; postData[0] = new
@@ -33,14 +34,14 @@ public class RetrivePage {
 		 * postMethod.addParameters(postData);
 		 */
 		// 执行，返回状态码
-		int statusCode = httpClient.executeMethod(postMethod);
+		int statusCode = httpClient.executeMethod(getMethod);
 		// 针对状态码进行处理 (简单起见，只处理返回值为200的状态码)
 		if (statusCode == HttpStatus.SC_OK) {
-			input = postMethod.getResponseBodyAsStream();
+			input = getMethod.getResponseBodyAsStream();
 			//得到文件名
 			String filename = path.substring(path.lastIndexOf('/')+1);
 			//获得文件输出流
-			output = new FileOutputStream(filename);
+			output = new FileOutputStream(filename+".html");
 			//输出到文件
 			int tempByte = -1;
 			while((tempByte=input.read())>0){
@@ -58,13 +59,13 @@ public class RetrivePage {
 		//若需要转向，则进行转向操作
 		if ((statusCode == HttpStatus.SC_MOVED_TEMPORARILY) || (statusCode == HttpStatus.SC_MOVED_PERMANENTLY) || (statusCode == HttpStatus.SC_SEE_OTHER) || (statusCode == HttpStatus.SC_TEMPORARY_REDIRECT)) {
 		    //读取新的URL地址
-			Header header = postMethod.getResponseHeader("location");
+			Header header = getMethod.getResponseHeader("location");
 			if(header!=null){
 				String newUrl = header.getValue();
 				if(newUrl==null||newUrl.equals("")){
 					newUrl="/";
 					//使用post转向
-					PostMethod redirect = new PostMethod(newUrl);
+					GetMethod redirect = new GetMethod(newUrl);
 					//发送请求，做进一步处理。。。。。
 				}
 			}

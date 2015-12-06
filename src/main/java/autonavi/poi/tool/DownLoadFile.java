@@ -1,4 +1,4 @@
-package autonavi.poi.dbhelper;
+package autonavi.poi.tool;
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -18,20 +18,27 @@ public class DownLoadFile {
 	 */
 	public  String getFileNameByUrl(String url,String contentType)
 	{
+		String fileName="";
 		//remove http://
+		System.out.println("url: "+url);
+		System.out.println("contentType: "+contentType);
 		url=url.substring(7);
 		//text/html类型
 		if(contentType.indexOf("html")!=-1)
 		{
-			url= url.replaceAll("[\\?/:*|<>\"]", "_")+".html";
-			return url;
+			fileName= url.replaceAll("[\\?/:*|<>\"]", "_")+".html";
 		}
 		//如application/pdf类型
 		else
 		{
-          return url.replaceAll("[\\?/:*|<>\"]", "_")+"."+
+			
+			fileName= url.replaceAll("[\\?/:*|<>\"]", "_")+"."+
           contentType.substring(contentType.lastIndexOf("/")+1);
+         
 		}	
+		 System.out.println("fileName: "+fileName);
+		 return fileName;
+		
 	}
 
 	/**

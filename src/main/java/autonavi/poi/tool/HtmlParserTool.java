@@ -1,4 +1,4 @@
-package autonavi.poi.dbhelper;
+package autonavi.poi.tool;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package autonavi.poi.dbhelper;
+package autonavi.poi.bean;
 
 import java.sql.Timestamp;
 import java.util.Date;

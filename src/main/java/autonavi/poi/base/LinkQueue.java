@@ -1,4 +1,4 @@
-package autonavi.poi.dbhelper;
+package autonavi.poi.base;
 
 
 import java.util.HashSet;
@@ -42,6 +42,11 @@ public class LinkQueue {
     //判断未访问的URL队列中是否为空
 	public static boolean unVisitedUrlsEmpty() {
 		return unVisitedUrl.isEmpty();
+	}
+	
+	
+	public static int getUnVisitedUrlNum() {
+		return unVisitedUrl.size();
 	}
 
 }
