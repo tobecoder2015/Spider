@@ -16,7 +16,7 @@ public class RetrivePage {
 	// 设置代理服务器
 	static {
 		// 设置代理服务器的IP地址和端口
-		httpClient.getHostConfiguration().setProxy("172.17.18.84", 8080);
+		//httpClient.getHostConfiguration().setProxy("172.17.18.84", 8080);
 	}
 
 	public static boolean downloadPage(String path) throws HttpException,
@@ -78,7 +78,7 @@ public class RetrivePage {
 	public static void main(String[] args) {
 		// 抓取lietu首页,输出
 		try {
-			RetrivePage.downloadPage("http://www.lietu.com");
+			RetrivePage.downloadPage("http://www.baidu.com");
 		} catch (HttpException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
