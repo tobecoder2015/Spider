@@ -263,6 +263,9 @@ public class BerkeleyDBUtil {
 	
 	public static void main(String[] strs){
 		try {
+			
+			
+			
 			BerkeleyDBUtil bdbFrontier=new BerkeleyDBUtil("d:\\bdb");
             CrawlUrl url=new CrawlUrl();
             url.setOriUrl("http://www.baidu.com");
